@@ -25,7 +25,7 @@ module.exports = merge(baseConfig, {
     new DashboardPlugin(),
     new FriendlyErrorsPlugin(),
     new ProgressBarPlugin({
-      format: 'build [:bar] ' + chalk.red.bold(':percent') + ' (:elapsed seconds)'
+      format: 'build [:bar] ' + chalk.cyan.bold(':percent') + ' (:elapsed seconds)'
   })
   ]
 });

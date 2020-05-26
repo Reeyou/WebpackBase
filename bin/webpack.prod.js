@@ -5,7 +5,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // clear dist/
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); // 抽离css，不再内嵌于js bundle
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin') // 优化压缩css资源
 const ScriptExtHtmlPlugin = require('script-ext-html-webpack-plugin') // html-webpack-plugin扩展插件
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 构架bundle 分析
+
+const config = require('../config/webpack')
 
 
 const webpackProdConfig = merge(baseConfig, {
@@ -26,6 +28,7 @@ const webpackProdConfig = merge(baseConfig, {
     ]
 });
 
+// npm run build --report
 if (config.build.bundleAnalyzerReport) {
     webpackProdConfig.plugins.push(new BundleAnalyzerPlugin());
 }
