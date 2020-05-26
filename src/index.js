@@ -1,10 +1,9 @@
 import _ from 'lodash';
 import './index.css'
 import { cube } from './math.js';
-import './module.js'
 
-if (process.env.NODE_ENV !== 'production') {
-    console.log('Looks like we are in development mode!');
+if(process.env.NODE_ENV == 'development') {
+    console.log('Your application enviorment mode are development.')
 }
 
 function component () {
@@ -17,7 +16,8 @@ function component () {
     element.innerHTML = _.join(['Hello', 'Webpack', text], ' ');
     element.classList.add('hello');
 
-    btn.innerHTML = 'Click me and check the console!'
+    btn.innerHTML = 'Click me....'
+
     // 模块懒加载
     btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
         var print = module.default;
@@ -25,7 +25,7 @@ function component () {
         print();
     });
     btnWrap.appendChild(btn)
-    element.appendChild(btnWrap)
+    element.appendChild(btnWrap) 
 
     pre.innerHTML = [
         'Hello webpack!',
@@ -48,8 +48,4 @@ if (module.hot) {
         document.body.removeChild(element);
         element = component(); // 重新渲染页面后，component 更新 click 事件处理+     document.body.appendChild(element);
     })
-}
-console.log(process.env.NODE_ENV )
-if(process.env.NODE_ENV == 'development') {
-    console.log('Your application enviorment is development.')
 }

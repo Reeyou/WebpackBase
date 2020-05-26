@@ -2,9 +2,9 @@
 const webpack = require('webpack');
 const ora = require('ora')
 
-const config = require('./webpack.config.js');
+const config = require('./webpack.prod.js');
 
-const spinner = new ora('Webpack is compiling ...\n')
+const spinner = new ora('Webpack is compiling build ...\n')
 spinner.color = 'green'
 spinner.start()
 
@@ -21,6 +21,6 @@ webpack(config).run((err, stats) => {
             chunks: false,
             chunkModules: false
         }) + '\n\n')
-        console.log('Webpack compiler finished successfullyï¼ See ./dist.')
+        console.log('Webpack compiler finished successfully! See ./dist.')
     }
 })

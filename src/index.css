@@ -1,6 +1,6 @@
 @font-face {
     font-family: "MyFont";
-    src: url("./sj_guyuan.ttf") format("truetype");
+    src: url("./sj_guyuan.ttf")  format("truetype");
     font-weight: 600;
     font-style: normal;
 }
@@ -13,6 +13,6 @@ div {
 }
 .hello {
     color: #696969;
-    font-family: 'MyFont';
+    font-family: "MyFont";
     margin: 0;
 }
