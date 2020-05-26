@@ -1,0 +1,8 @@
+.DS_STORE
+*.log
+node_modules
+dist
+.package-lock
+dll
+.vscode/
+deploy.sh
