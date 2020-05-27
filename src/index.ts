@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import './index.css'
-import { cube } from './math.js';
+import printMe from './print'
 
 if(process.env.NODE_ENV == 'development') {
     console.log('Your application enviorment mode are development.')
@@ -19,17 +19,20 @@ function component () {
     btn.innerHTML = 'Click me....'
 
     // 模块懒加载
-    btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
-        var print = module.default;
+    // btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+    //     var print = module.default;
 
-        print();
-    });
+    //     print();
+    // });
+
+    // @ts-ignore
+    btn.onclick = printMe()
     btnWrap.appendChild(btn)
     element.appendChild(btnWrap) 
 
     pre.innerHTML = [
         'Hello webpack!',
-        '5 cubed is equal to ' + cube(5)
+        '5 cubed is equal to '
     ].join('\n\n');
     element.appendChild(pre)
 
@@ -41,8 +44,10 @@ function component () {
 let element = component(); // 当 print.js 改变导致页面重新渲染时，重新获取渲染的元素
 document.body.appendChild(element);
 
+// @ts-ignore
 if (module.hot) {
-    module.hot.accept('./print.js', function () {
+    // @ts-ignore
+    module.hot.accept('./print', function () {
         console.log('Accepting the updated printMe module!');
         // printMe();
         document.body.removeChild(element);

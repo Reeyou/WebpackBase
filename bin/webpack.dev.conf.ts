@@ -1,18 +1,24 @@
-const merge = require('webpack-merge');
-const webpack = require('webpack')
-const baseConfig = require('./webpack.config.js');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const chalk = require('chalk')
+// @ts-ignore
+import merge from 'webpack-merge'
+import webpack from 'webpack'
+import baseConfig from './webpack.config'
+// @ts-ignore
+import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
+// @ts-ignore
+import DashboardPlugin from 'webpack-dashboard/plugin'
+// @ts-ignore
+import ProgressBarPlugin from 'progress-bar-webpack-plugin'
+import chalk from 'chalk'
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 
 Object.keys(baseConfig.entry).forEach((name) => {
   // entry array add webpack-hot-middleware
+  // @ts-ignore
   baseConfig.entry[name] = [hotMiddlewareScript].concat(baseConfig.entry[name]);
 });
 
+// @ts-ignore
 module.exports = merge(baseConfig, {
   devtool: 'inline-source-map',
   mode: 'development',
