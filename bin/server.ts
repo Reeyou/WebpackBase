@@ -1,12 +1,14 @@
-const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const opn = require('opn')
-const chalk = require('chalk')
+// @ts-ignore
+import express from 'express'
+import webpack from 'webpack'
+// @ts-ignore
+import webpackDevMiddleware from 'webpack-dev-middleware'
+// @ts-ignore
+import opn from 'opn'
+import chalk from 'chalk'
 
 const app = express();
-const config = require('./webpack.dev.js');
-// const config = require('./webpack.config.js');
+const config = require('./webpack.dev.conf');
 const compiler = webpack(config);
 
 const host = process.env.HOST || 'localhost';
@@ -36,7 +38,7 @@ devMiddleware.waitUntilValid(() => {
 app.use(devMiddleware)
 
 // Serve the files on port.
-app.listen(port, function (err) {
+app.listen(port, (err: any) => {
   if (err) {
     console.log(err);
     return;

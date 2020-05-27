@@ -1,15 +1,18 @@
-const path = require('path');
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // init index.html
+/* eslint-disable import/no-extraneous-dependencies */
 
-const os = require('os') //获取电脑的处理器有几个核心，作为配置传入
-const HappyPack = require('happypack')
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+import path from 'path'
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin' // init index.html
 
+import os from 'os' //获取电脑的处理器有几个核心，作为配置传入
+// @ts-ignore
+import HappyPack from 'happypack'
 
-module.exports = {
+const threads = os.cpus().length
+
+export default {
     entry: {
-        app: './src/index.js'
+        app: './src/index.ts'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -25,7 +28,7 @@ module.exports = {
         new HappyPack({ //开启多线程打包
             id: 'happy-babel-js',
             loaders: ['babel-loader?cacheDirectory=true'],
-            threadPool: happyThreadPool
+            threads,
         })
     ],
     // 通用模块代码分离
@@ -59,6 +62,9 @@ module.exports = {
         filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     },
     module: {
         rules: [

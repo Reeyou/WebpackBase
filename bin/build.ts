@@ -1,10 +1,10 @@
 
-const webpack = require('webpack');
-const ora = require('ora')
+import webpack from 'webpack'
+import ora from 'ora'
 
-const config = require('./webpack.prod.js');
+import config from './webpack.prod'
 
-const spinner = new ora('Webpack is compiling build ...\n')
+const spinner = ora('Webpack is compiling build ...\n')
 spinner.color = 'green'
 spinner.start()
 
