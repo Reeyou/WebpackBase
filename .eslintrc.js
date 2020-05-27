@@ -4,6 +4,7 @@ module.exports = {
         es6: true,
     },
     extends: [
+        'plugin:vue/essential',
         'airbnb-base',
     ],
     globals: {
@@ -14,15 +15,25 @@ module.exports = {
         ecmaVersion: 11,
         sourceType: 'module',
     },
+    plugins: [
+        'vue',
+    ],
+    settings: {
+        'import/resolver': {
+            node: {
+                extensions: ['.js', '.jsx', '.ts', '.vue'],
+            },
+        },
+    },
     rules: {
         'global-require': 0,
-        'linebreak-style': ['error', 'windows'],
         semi: ['error', 'never'],
         'implicit-arrow-linebreak': 0,
+        'linebreak-style': ['off', 'windows'],
         'import/extensions': [
             2,
             {
-                ts: 'never',
+                vue: 'never',
                 tsx: 'never',
                 js: 'never',
                 jsx: 'never',
