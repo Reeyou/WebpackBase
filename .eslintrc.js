@@ -4,7 +4,8 @@ module.exports = {
         es6: true,
     },
     extends: [
-        'airbnb-base',
+        'plugin:react/recommended',
+        'airbnb',
     ],
     globals: {
         Atomics: 'readonly',
@@ -12,11 +13,18 @@ module.exports = {
     },
     parser: '@typescript-eslint/parser',
     parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
         ecmaVersion: 11,
         sourceType: 'module',
+        project: './tsconfig.json',
+        createDefaultProgram: true,
     },
     plugins: [
+        'react',
         '@typescript-eslint',
+        'jsx-a11y', 'import',
     ],
     settings: {
         'import/resolver': {
@@ -56,6 +64,17 @@ module.exports = {
         'no-plusplus': 0,
         'no-script-url': 0,
         'no-underscore-dangle': 0,
-        'object-curly-newlisne': 0,
+        'object-curly-newline': 0,
+        'react/jsx-filename-extension': [
+            2,
+            {
+                extensions: ['.js', '.jsx', '.tsx'],
+            },
+        ],
+        'react/jsx-indent': [2, 4],
+        'react/jsx-indent-props': [2, 4],
+        'react/jsx-props-no-spreading': 0,
+        'react/jsx-one-expression-per-line': 0,
+        'react/static-property-placement': 0,
     },
 }

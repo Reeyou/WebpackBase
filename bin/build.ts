@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 
 import webpack from 'webpack'
 import ora from 'ora'
@@ -14,13 +15,13 @@ webpack(config).run((err, stats) => {
         console.log('Webpack compile failure')
     } else {
         spinner.stop()
-        process.stdout.write(stats.toString({
+        process.stdout.write(`${stats.toString({
             colors: true,
             modules: false,
             children: false,
             chunks: false,
-            chunkModules: false
-        }) + '\n\n')
+            chunkModules: false,
+        })}\n\n`)
         console.log('Webpack compiler finished successfully! See ./dist.')
     }
 })
