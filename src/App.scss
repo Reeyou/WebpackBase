@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "MyFont";
+    src: url("./assets/fonts/sj_guyuan.ttf")  format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #fefefe;
+}
+.hello {
+    color: #696969;
+    font-family: "MyFont";
+    margin: 0;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px 0;
+}
+.app {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.blur, .child {
+    position: absolute;
+}
+
+.blur {
+    filter: blur(10px);
+}
+

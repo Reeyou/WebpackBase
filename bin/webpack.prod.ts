@@ -10,10 +10,10 @@ import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin' // 优化压�
 // @ts-ignore
 // import ScriptExtHtmlPlugin from 'script-ext-html-webpack-plugin' // html-webpack-plugin扩展插件
 // @ts-ignore
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer' // 构建bundle 分析
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer' // 构建bundle 分析
 import baseConfig from './webpack.config'
 
-import config from '../config/webpack'
+// import config from '../config/webpack'
 
 // @ts-ignore
 const webpackProdConfig = merge(baseConfig, {
@@ -35,8 +35,8 @@ const webpackProdConfig = merge(baseConfig, {
 })
 
 // npm run build --report
-if (config.build.bundleAnalyzerReport) {
-    webpackProdConfig.plugins.push(new BundleAnalyzerPlugin())
-}
+// if (config.build.bundleAnalyzerReport) {
+//     webpackProdConfig.plugins.push(new BundleAnalyzerPlugin())
+// }
 
 export default webpackProdConfig

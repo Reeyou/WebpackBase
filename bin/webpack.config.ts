@@ -12,7 +12,7 @@ const threads = os.cpus().length
 
 export default {
     entry: {
-        app: './src/App.tsx',
+        app: './src/main.tsx',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -51,7 +51,7 @@ export default {
                 },
                 styles: {
                     name: 'styles',
-                    test: /(\.less|\.css)$/,
+                    test: /(\.scss|\.css)$/,
                     chunks: 'all',
                     enforce: true,
                 },
@@ -60,11 +60,14 @@ export default {
     },
     output: {
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '/',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+        alias: {
+            '@': path.join(__dirname, 'src'),
+        },
     },
     module: {
         rules: [
@@ -83,13 +86,30 @@ export default {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                            modules: {
+                                localIdentName: '[local]--[hash:base64:5]',
+                            },
+                        }
+                    }
                 ],
             },
             {
                 test: /\.scss$/,
                 use: [
-                    'css-loader',
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                            modules: {
+                                localIdentName: '[local]--[hash:base64:5]',
+                            },
+                        }
+                    },
                     'sass-loader',
                 ],
             },

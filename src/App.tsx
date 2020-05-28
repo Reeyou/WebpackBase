@@ -1,7 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import Styles from './App.scss'
+import Button from './components/Button'
 
-ReactDOM.render(
-    <h1>Hello, world!!!</h1>,
-    document.getElementById('root'),
-)
+export default function App() {
+    return (
+        <div className={Styles.app}>
+            <p className={Styles.hello}>Hello React!</p>
+            <Button onClick={() => {console.log(111)}}>Button Component</Button>
+        </div>
+    )
+}
+
