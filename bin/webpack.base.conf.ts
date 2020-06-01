@@ -2,17 +2,23 @@
 
 import path from 'path'
 import webpack from 'webpack'
-import HtmlWebpackPlugin from 'html-webpack-plugin' // init index.html
-
-import os from 'os' // 获取电脑的处理器有几个核心，作为配置传入
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import os from 'os' 
 // @ts-ignore
 import HappyPack from 'happypack'
 
 const threads = os.cpus().length
 
+const envDevelopment = process.env.NODE_ENV === 'development'
 export default {
     entry: {
         app: './src/main.tsx',
+    },
+    output: {
+        filename: envDevelopment ? 'js/[name].js' : "js/[name].[hash].js",
+        path: path.resolve('..', __dirname, 'dist'),
+        publicPath: '/',
+        chunkFilename: 'js/[chunkhash:4].chunk.js',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -23,15 +29,16 @@ export default {
                 collapseWhitespace: true,
             },
         }),
-        new webpack.NamedModulesPlugin(), // 查看修补的依赖
-        new webpack.HashedModuleIdsPlugin(),
-        new HappyPack({ // 开启多线程打包
+        new HappyPack({
             id: 'happy-babel-js',
             loaders: ['babel-loader?cacheDirectory=true'],
             threads,
         }),
+        new webpack.DllReferencePlugin({
+            context: path.resolve(__dirname, 'dll'),
+            manifest: path.resolve(__dirname, 'dll', 'manifest.json')
+        }),
     ],
-    // 通用模块代码分离
     optimization: {
         splitChunks: {
             chunks: 'all',
@@ -58,11 +65,6 @@ export default {
             },
         },
     },
-    output: {
-        filename: '[name].[hash].js',
-        path: path.resolve(__dirname, '..', 'dist'),
-        publicPath: '/',
-    },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
         alias: {
@@ -78,9 +80,11 @@ export default {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader',
-                ],
+                loader: 'file-loader',
+                options: {
+                    limit: 10000,
+                    outputPath: "fonts"
+                },
             },
             {
                 test: /\.css$/,
@@ -115,9 +119,11 @@ export default {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader',
-                ],
+                loader:'file-loader',
+                options: {
+                    limit: 10000,
+                    outputPath: "images"
+                },
             },
         ],
     },

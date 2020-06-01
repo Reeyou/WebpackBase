@@ -1,14 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import merge from 'webpack-merge'
 import webpack from 'webpack'
-// @ts-ignore
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin'
-// @ts-ignore
 import DashboardPlugin from 'webpack-dashboard/plugin'
-// @ts-ignore
 import ProgressBarPlugin from 'progress-bar-webpack-plugin'
 import chalk from 'chalk'
-import baseConfig from './webpack.config'
+import baseConfig from './webpack.base.conf'
 
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
 

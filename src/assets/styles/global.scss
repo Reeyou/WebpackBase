@@ -1,18 +1,29 @@
+
+@import '../../../node_modules/normalize.css/normalize.css';
 @font-face {
-    font-family: "MyFont";
+    font-family: "local-sanji";
     src: url("../fonts/sj_guyuan.ttf")  format("truetype");
     font-weight: 600;
     font-style: normal;
 }
+@font-face {
+    font-family: "local-qingning";
+    src: url("../fonts/qn_youyuan.ttf")  format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+html {
+    font-family: 'local-sanji', 'Arial', 'Verdana', '微软雅黑', '黑体', 'serif';
+}
+p {
+    font-family: 'local-qingning',
+}
 body {
     background: #fefefe;
-    padding: 18px;
 }
-div {
-    margin: 10px 0;
+button:hover {
+    cursor: pointer;
 }
-.hello {
-    color: #696969;
-    font-family: "MyFont";
-    margin: 0;
+button:focus {
+    outline: none;
 }

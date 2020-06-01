@@ -21,7 +21,7 @@ function Button (props: ButtonProps) {
                 type="button"
                 onClick={onClick}
             >
-                {children}
+                <span>{children}</span>
             </button>
         </div>
     )

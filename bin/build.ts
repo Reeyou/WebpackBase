@@ -9,7 +9,7 @@ const spinner = ora('Webpack is compiling build ...\n')
 spinner.color = 'green'
 spinner.start()
 
-
+// @ts-ignore
 webpack(config).run((err, stats) => {
     if (err) {
         console.log('Webpack compile failure')

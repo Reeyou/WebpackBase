@@ -1,11 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'path'
 import webpack from 'webpack'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
-module.exports = {
+export default {
     entry: {
-        vendor: ['lodash'],
+        vendor: [
+            'react',
+            'react-dom',
+            'react-router',
+            'redux',
+            'react-redux',
+            'redux-thunk'
+        ],
     },
     output: {
         path: path.resolve(__dirname, 'dll'),
@@ -13,11 +19,10 @@ module.exports = {
         library: '[name]_library',
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new webpack.DllPlugin({
             name: '[name]_library',
-            path: path.resolve(__dirname, 'dll', 'manifest.json'),
             context: __dirname,
+            path: path.resolve(__dirname, 'dll', 'manifest.json')
         }),
     ],
 }

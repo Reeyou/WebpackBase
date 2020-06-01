@@ -20,11 +20,10 @@ const port = 5050
 // configuration file as a base.
 const devMiddleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
-    quiet: false,
-    noInfo: false,
-    lazy: false,
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    stats: 'errors-only',
+    // quiet: false,
+    // noInfo: false,
+    // lazy: false,
+    // stats: 'errors-only',
 })
 
 app.use(require('webpack-hot-middleware')(compiler, {
@@ -38,6 +37,7 @@ devMiddleware.waitUntilValid(() => {
 })
 
 app.use(devMiddleware)
+app.use(express.static(__dirname))
 
 // Serve the files on port.
 app.listen(port, (err: any) => {
