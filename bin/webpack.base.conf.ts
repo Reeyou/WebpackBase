@@ -12,7 +12,7 @@ const threads = os.cpus().length
 const envDevelopment = process.env.NODE_ENV === 'development'
 export default {
     entry: {
-        app: './src/main.tsx',
+        app: './src/App.tsx',
     },
     output: {
         filename: envDevelopment ? 'js/[name].js' : "js/[name].[hash].js",

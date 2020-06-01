@@ -1,15 +1,13 @@
 import React from 'react'
-import Styles from './App.scss'
-import Button from './components/Button'
-import './assets/styles/global.scss';
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import "./components/Button.scss"
+import Route from './router'
+import store from './state/store'
 
-export default function App() {
-    return (
-        <div className={Styles.app}>
-            <h1>带你深度解锁Webpack系列(进阶篇)</h1>
-            <p className={Styles.hello}>Hello world!</p>
-            <Button onClick={() => {console.log(111)}}>登录</Button>
-        </div>
-    )
-}
-
+ReactDOM.render(
+    <Provider store={store}>
+        <Route />
+    </Provider>,
+    document.getElementById('root'),
+)

@@ -21,7 +21,9 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
     "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.8",
     "@types/webpack-merge": "^4.1.5",
     "@typescript-eslint/eslint-plugin": "^3.0.1",
     "@typescript-eslint/parser": "^3.0.1",
@@ -71,11 +73,13 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.7",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   }
